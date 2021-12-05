@@ -23,7 +23,7 @@ delete_fields = ['time_to_warehouse','show_in_mobile_categories','copy_cat_l3_id
                  'copy_price']
 
 def remove_first_last_sc(txt):
-    
+    """Remove first and last special character from string"""
     FIRST_LAST_SC = re.compile(r'^[^A-Za-z0-9\s]+|[^A-Za-z0-9\s]+$', re.IGNORECASE)
     
     txt=str(txt).lower().strip()
@@ -37,11 +37,13 @@ def remove_first_last_sc(txt):
     
 
 def stems(txt):
+    """Porter stemmer to stem word to root; e.g. stemming -> stem"""
     txt=str(txt).lower().strip()
     stemmed_txt = ' '.join([stem(word) for word in txt.split()])
     return(stemmed_txt)
 
 def remove_char_encoding(txt):
+    """Remove character encoding"""
     txt=str(txt)
     return(unquote(unquote_plus(txt)))
 
